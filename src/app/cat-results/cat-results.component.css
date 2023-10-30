@@ -1,0 +1,10 @@
+.cat {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.cat-image {
+    max-width: 200px;
+    max-height: 200px
+}
