@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatSearchComponent } from './cat-search/cat-search.component';
-import { CatResultsComponent } from './cat-results/cat-results.component';
-import { BreedsResolver } from './breeds.resolver';
+import { BreedsResolver } from './resolvers/breeds.resolver';
+import { CatsPageComponent } from "./components/cats-page/cats-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: CatSearchComponent,
+    component: CatsPageComponent,
     resolve: { breeds: BreedsResolver },
-  },
-  {
-    path: 'results',
-    component: CatResultsComponent,
   },
 ];
 

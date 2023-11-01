@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { apiRequest} from "../constants/cat-api-request";
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
+
 export class CatService {
-  private apiUrl = 'https://api.thecatapi.com/v1';
 
   constructor(private http: HttpClient) {}
 
-  getBreeds() {
-    return this.http.get<string[]>(`${this.apiUrl}/breeds`);
+  getBreeds(): Observable<{ id: string, name: string }[]> {
+    return this.http.get<{ id: string, name: string }[]>(`${apiRequest.apiUrl}/breeds`);
   }
 
   searchCats(selectedBreed: string, resultsQuantity: number): Observable<any[]> {
@@ -20,9 +19,9 @@ export class CatService {
     };
 
     if (selectedBreed !== 'all') {
-      params.breeds = selectedBreed;
+      params.breed_ids = selectedBreed;
     }
 
-    return this.http.get<any[]>(`${this.apiUrl}/images/search`, { params });
+    return this.http.get<any[]>(`${apiRequest.apiUrl}/images/search`, { params });
   }
 }

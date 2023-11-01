@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="cat" *ngFor="let image of catImages$ | async">
+        <img class="cat-image" [src]="image.url" alt="cat" />
+    </div>
+</div>
